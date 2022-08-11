@@ -1,2 +1,3 @@
-# C-Router
-Simulating a router with c programming language
+# G-Router
+
+Simulating a router with Golang programming language.
