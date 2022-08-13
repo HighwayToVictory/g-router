@@ -1,7 +1,8 @@
-package main
+package configs
 
-import "fmt"
+type Config struct {
+}
 
-func main() {
-	fmt.Println("vim-go")
+func Load() Config {
+	return Default()
 }
