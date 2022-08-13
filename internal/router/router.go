@@ -1,7 +1,19 @@
-package main
+package router
 
-import "fmt"
+type Router struct {
+	routingTable map[string][]string
+}
 
-func main() {
-	fmt.Println("vim-go")
+func New() *Router {
+	return &Router{
+		routingTable: make(map[string][]string),
+	}
+}
+
+func (r *Router) match(ip string) string {
+	return ""
+}
+
+func (r *Router) Next(ip string) {
+
 }
