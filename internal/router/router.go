@@ -1,13 +1,27 @@
 package router
 
+const (
+	numberOfInterface = 10
+)
+
 type Router struct {
+	defaultGateWay string
+
 	routingTable map[string]string
 }
 
 func New() *Router {
 	return &Router{
-		routingTable: make(map[string]string),
+		routingTable: make(map[string]string, numberOfInterface),
 	}
+}
+
+func (r *Router) RegisterIp(routerInterface string, ip string) {
+	r.routingTable[ip] = routerInterface
+}
+
+func (r *Router) Next(ip string) string {
+	return r.match(ip)
 }
 
 func (r *Router) match(ip string) string {
@@ -17,13 +31,5 @@ func (r *Router) match(ip string) string {
 		}
 	}
 
-	return "default gateway"
-}
-
-func (r *Router) Register(routerInterface string, ip string) {
-	r.routingTable[ip] = routerInterface
-}
-
-func (r *Router) Next(ip string) string {
-	return r.match(ip)
+	return r.defaultGateWay
 }
