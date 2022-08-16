@@ -1,13 +1,15 @@
 package cmd
 
 import (
-	"fmt"
+	"sync"
 
 	"github.com/HighwayToVictory/g-router/internal/metrics"
 )
 
 func Execute() {
-	metrics.NewMetrics()
+	wg := sync.WaitGroup{}
 
-	fmt.Println("vim-go")
+	metrics.NewMetrics(&wg)
+
+	wg.Wait()
 }
