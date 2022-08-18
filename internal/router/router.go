@@ -25,6 +25,8 @@ func (r *Router) RegisterIp(routerInterface string, ip string) {
 }
 
 func (r *Router) Next(ip string) string {
+	r.metrics.RequestCounter.Add(1)
+
 	return r.match(ip)
 }
 
@@ -34,6 +36,8 @@ func (r *Router) match(ip string) string {
 			return r.routingTable[key]
 		}
 	}
+
+	r.metrics.GatewayCounter.Add(1)
 
 	return r.defaultGateWay
 }
