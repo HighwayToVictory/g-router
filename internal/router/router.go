@@ -1,9 +1,13 @@
 package router
 
+import "github.com/HighwayToVictory/g-router/internal/metrics"
+
 type Router struct {
 	defaultGateWay string
 
 	routingTable map[string]string
+
+	metrics metrics.Metrics
 }
 
 func New(cfg Config) Router {
@@ -11,6 +15,8 @@ func New(cfg Config) Router {
 		defaultGateWay: cfg.DefaultGateWay,
 
 		routingTable: make(map[string]string, cfg.NumberOfInterface),
+
+		metrics: metrics.NewMetrics(),
 	}
 }
 

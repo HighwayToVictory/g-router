@@ -9,7 +9,7 @@ import (
 func Execute() {
 	wg := sync.WaitGroup{}
 
-	metrics.NewMetrics(&wg)
+	metrics.Register(&wg)
 
 	wg.Wait()
 }
