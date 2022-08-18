@@ -5,7 +5,6 @@ import (
 	"math/rand"
 	"strconv"
 	"strings"
-	"sync"
 	"time"
 
 	"github.com/HighwayToVictory/g-router/internal/configs"
@@ -14,14 +13,11 @@ import (
 )
 
 func Execute() {
-	wg := sync.WaitGroup{}
 	cfg := configs.Load()
 
 	go putOnRouter(cfg.Router)
 
-	metrics.Register(&wg)
-
-	wg.Wait()
+	metrics.Register()
 }
 
 func randomIp() string {
