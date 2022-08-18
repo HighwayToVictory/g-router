@@ -1,13 +1,15 @@
 package metrics
 
 import (
+	"net/http"
+
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
-	"net/http"
 )
 
 const (
 	namespace = "g-router"
+	subsystem = "g-router"
 )
 
 type Metrics struct {
@@ -19,11 +21,13 @@ func NewMetrics() Metrics {
 	return Metrics{
 		RequestCounter: prometheus.NewCounter(prometheus.CounterOpts{
 			Namespace: namespace,
+			Subsystem: subsystem,
 			Name:      "request_counter",
 			Help:      "number of requests to router",
 		}),
 		GatewayCounter: prometheus.NewCounter(prometheus.CounterOpts{
 			Namespace: namespace,
+			Subsystem: subsystem,
 			Name:      "gateway_counter",
 			Help:      "number of routes that hit gateway",
 		}),
