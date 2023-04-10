@@ -1,48 +1,51 @@
-# Prerequisites
+# prerequisites
 *.d
 
-# Object files
+# object files
 *.o
 *.ko
 *.obj
 *.elf
 
-# Linker output
+# linker output
 *.ilk
 *.map
 *.exp
 
-# Precompiled Headers
+# precompiled Headers
 *.gch
 *.pch
 
-# Libraries
+# libraries
 *.lib
 *.a
 *.la
 *.lo
+__pycache__/
 
-# Shared objects (inc. Windows DLLs)
+# shared objects (inc. Windows DLLs)
 *.dll
 *.so
 *.so.*
 *.dylib
 
-# Executables
+# executables
 *.exe
 *.out
 *.app
 *.i*86
 *.x86_64
 *.hex
+*_exe
 
-# Debug files
+# debug files
 *.dSYM/
 *.su
 *.idb
 *.pdb
+test/
 
-# Kernel Module Compile Results
+# kernel Module Compile Results
 *.mod*
 *.cmd
 .tmp_versions/
@@ -50,3 +53,9 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# my modules
+.DS_Store
+.vscode/
+.idea/
+config.yml
