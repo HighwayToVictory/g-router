@@ -21,9 +21,20 @@ def _enable_linux_iproute():
 
 def _enable_windows_iproute():
     """
-    Enables IP route (IP Forwarding) in Windows
+    Enables IP route (IP Forwarding) in Windows.
     """
     from windows.service import WService
     # enable Remote Access service
     service = WService("RemoteAccess")
     service.start()
+
+
+def enable_ip_route(verbose=True):
+    """
+    Enables IP forwarding.
+    """
+    if verbose:
+        print("[!] Enabling IP Routing...")
+    _enable_windows_iproute() if "nt" in os.name else _enable_linux_iproute()
+    if verbose:
+        print("[!] IP Routing enabled.")
