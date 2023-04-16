@@ -17,3 +17,13 @@ def _enable_linux_iproute():
             return  # already enabled
     with open(file_path, "w") as f:
         print(1, file=f)
+
+
+def _enable_windows_iproute():
+    """
+    Enables IP route (IP Forwarding) in Windows
+    """
+    from windows.service import WService
+    # enable Remote Access service
+    service = WService("RemoteAccess")
+    service.start()
